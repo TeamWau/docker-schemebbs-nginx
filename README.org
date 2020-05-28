@@ -1,5 +1,5 @@
 * SchemeBBS for Docker
-  A Dockerfile that puts [[https://gitlab.com/naughtybits/schemebbs][SchemeBBS]] behind nginx with certbot, held
+  A Dockerfile that puts [[https://gitlab.com/naughtybits/schemebbs][SchemeBBS]] behind nginx, held
   together by supervisord. Based on [[https://github.com/TeamWau/docker-schemebbs][docker-schemebbs]].
 
 ** Usage

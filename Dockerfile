@@ -24,7 +24,7 @@ RUN rm -rf /tmp/build \
 	&& apk del build-dependencies
 
 ## Bring in the supervisor
-# pcre is needed at runtime by nginx
+# nginx needs pcre at runtime
 RUN apk --no-cache add supervisor pcre
 ADD supervisord.conf /etc/supervisord.conf
 
