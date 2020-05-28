@@ -25,9 +25,9 @@ RUN rm -rf /tmp/build \
 
 ## Bring in the supervisor
 RUN apk --no-cache add supervisor
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 ## Run
 EXPOSE 80
 VOLUME /opt/schemebbs/data
-CMD supervisord
+CMD supervisord --configuration /etc/supervisor/supervisord.conf
