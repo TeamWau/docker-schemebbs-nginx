@@ -15,7 +15,7 @@ RUN tar xfz nginx-${NGINX_VERSION}.tar.gz
 
 ## Build with modules
 WORKDIR /tmp/build/nginx-${NGINX_VERSION}
-RUN ./configure --add-module=/tmp/build/ngx-fancyindex --add-module=/tmp/build/ngx-substitutions \
+RUN ./configure --prefix=/opt/nginx --add-module=/tmp/build/ngx-fancyindex --add-module=/tmp/build/ngx-substitutions \
 	&& make && make install
 
 ## Cleanup
@@ -24,10 +24,11 @@ RUN rm -rf /tmp/build \
 	&& apk del build-dependencies
 
 ## Bring in the supervisor
-RUN apk --no-cache add supervisor
-ADD supervisord.conf /etc/supervisor/supervisord.conf
+# pcre is needed at runtime by nginx
+RUN apk --no-cache add supervisor pcre
+ADD supervisord.conf /etc/supervisord.conf
 
 ## Run
 EXPOSE 80
 VOLUME /opt/schemebbs/data
-CMD supervisord --configuration /etc/supervisor/supervisord.conf
+CMD supervisord --configuration /etc/supervisord.conf

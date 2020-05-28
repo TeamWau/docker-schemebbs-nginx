@@ -7,7 +7,7 @@
    % export SBBS_DATADIR=/opt/bbs
    % docker run -p 80:80 --name sbbs -d \
    	-v "${SBBS_DATADIR}":/opt/schemebbs/data \
-	-v "$(pwd)"/nginx.conf:/etc/nginx/nginx.conf \
+	-v "$(pwd)"/nginx.conf:/opt/nginx/conf/nginx.conf \
 	erkin/schemebbs-nginx
    % ./create-boards.sh cats travel food
    #+END_SRC
